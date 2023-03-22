@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <link href="//maxcdn.bootstrapcdn.com/bootstrap/4.1.1/css/bootstrap.min.css" rel="stylesheet" id="bootstrap-css">
+<script src="//maxcdn.bootstrapcdn.com/bootstrap/4.1.1/js/bootstrap.min.js"></script>
+<script src="//cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        table {
+    border-collapse: collapse;
+    width: 100%; 
+    margin: auto; 
+}
+
+
+th, td {
+    text-align: left;
+    padding: 8px;
+    width: 50%; 
+}
+th {
+    background-color: #4CAF50;
+    color: white;
+}
+
+tr:nth-child(even) {
+    background-color: #f2f2f2;
+}
+
+    </style>
+</head>
+<body>
+    {% include 'hr_navbar.html' %}
+    <form>
+ 
+        <h1><center> Task: </center></h1>
+        <table class="table">
+            <tr>
+                <th>Date</th>
+                <th>Task</th>
+            </tr>
+            {% for update in updates %}
+            <tr>
+                <td>{{ update.date }}</td>
+                <td>{{ update.task }}</td>
+            </tr>
+            {% endfor %}
+        </table>
+    </div>
+    </form>
+</body>
+</html>

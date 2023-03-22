@@ -1,0 +1,94 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Employee List</title>
+  <style>
+    th {
+      background-color: #eee;
+    }
+
+    td, th {
+      padding: 8px;
+      border: 1px solid #ddd;
+    }
+
+    table {
+      border-collapse: collapse;
+      width: 100%;
+    }
+
+    tbody tr:nth-child(even) {
+      background-color: #f2f2f2;
+    }
+  </style>
+</head>
+<body>
+  {% block content  %}
+  <h1>Employee List</h1>
+
+  <form method="GET">
+    <label for="department">Department:</label>
+    <select name="department" id="department">
+      <option value="">All</option>
+      {% for department in departments %}
+        <option value="{{ department }}" {% if department == selected_department %}selected{% endif %}>{{ department }}</option>
+      {% endfor %}
+    </select>
+
+    <label for="designation">Designation:</label>
+    <select name="designation" id="designation">
+      <option value="">All</option>
+      {% for designation in designations %}
+        <option value="{{ designation }}" {% if designation == selected_designation %}selected{% endif %}>{{ designation }}</option>
+      {% endfor %}
+    </select>
+
+    <button type="submit">Submit</button>
+  </form>
+
+  <table>
+    <thead>
+      <tr>
+        <th>Name</th>
+        <th>Email</th>
+        <th>Department</th>
+        <th>Designation</th>
+        <th>contact_number</th>
+        <th>dob</th>
+        <!-- <th>degree_name</th> -->
+        <!-- <th>institute_name</th> -->
+        <!-- <th>passing_year</th> -->
+        <!-- <th>percentage</th> -->
+        <th>salary</th>
+        <!-- <th>certificate</th> -->
+
+      </tr>
+    </thead>
+    <tbody>
+      {% for employee in employees %}
+        <tr>
+          <td>{{ employee.name }}</td>
+          <td>{{ employee.email }}</td>
+          <td>{{ employee.department }}</td>
+          <td>{{ employee.designation }}</td>
+          <td>{{ employee.contact_number }}</td>
+          <td>{{ employee.date_of_birth }}</td>
+		  <td>{{ employee.salary }}</td>
+          <!-- <td>{{ employee.degree_name }}</td>
+          <td>{{ employee.institute_name }}</td>
+          <td>{{ employee.passing_year }}</td>
+          <td>{{ employee.percentage }}</td>
+         <td>{{ employee.certificate }}</td> -->
+
+
+        </tr>
+      {% empty %}
+        <tr>
+          <td colspan="4">No employees found</td>
+        </tr>
+      {% endfor %}
+    </tbody>
+  </table>
+  {% endblock %}
+</body>
+</html>
